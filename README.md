@@ -42,6 +42,10 @@
    ```bash
    flask run
    ```
+   if don't work
+   ```bash
+   python -m flask run
+   ```
 ---
 
 ## Setup for NZXT CAM 📺
