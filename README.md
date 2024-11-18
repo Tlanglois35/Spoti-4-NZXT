@@ -42,7 +42,7 @@
    ```bash
    flask run
    ```
-   if don't work
+   If it doesn't work, try:
    ```bash
    python -m flask run
    ```
