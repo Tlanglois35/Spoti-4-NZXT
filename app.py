@@ -2,14 +2,18 @@ from flask import Flask, jsonify, render_template
 import time as t
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
-# Your authentication information
-SPOTIPY_CLIENT_ID = '' # YOUR CLIENT ID
-SPOTIPY_CLIENT_SECRET = '' # YOUR CLIENT SECRET
-SPOTIPY_REDIRECT_URI = 'http://localhost:3000'
-
+# Retrieve authentication information from environment variables
+SPOTIPY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
+SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
+SPOTIPY_REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
 
 scope = 'user-read-playback-state'
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
