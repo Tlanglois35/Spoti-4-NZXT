@@ -1,5 +1,5 @@
 # Spoti4NZXT
-App for NZXT Kraken screen
+Application créant une intégration web Spotify pour permettre l'affichage de la musique en cours d'écoute sur votre écran du NZXT KRAKEN Z.
 
 # Ajouter son CLIENT ID pour faire fonctionner l'app
  - Aller dans le fichier "app.py".
