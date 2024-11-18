@@ -31,8 +31,9 @@
    ```
 3. Configure your .env file with the following:
    ```bash
-   SPOTIFY_CLIENT_ID=<your-client-id>
-   SPOTIFY_CLIENT_SECRET=<your-client-secret>
+   SPOTIFY_CLIENT_ID=your-client-id
+   SPOTIFY_CLIENT_SECRET=your-client-secret
+   SPOTIFY_REDIRECT_URI=http://localhost:3000
    FLASK_APP=app.py
    ```
    Replace <your-client-id> and <your-client-secret> with your Spotify API credentials.
