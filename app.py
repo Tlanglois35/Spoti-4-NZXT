@@ -15,6 +15,15 @@ SPOTIPY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
 SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
 SPOTIPY_REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
 
+# Vérifie si le fichier de cache est corrompu
+cache_path = ".cache"  # ou ajuste selon ton setup
+if os.path.exists(cache_path):
+    with open(cache_path, "r") as f:
+        if f.read().strip() == "":
+            print("⚠️  Le fichier de cache est vide ou corrompu. Suppression...")
+            os.remove(cache_path)
+
+
 scope = 'user-read-playback-state'
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                                                client_secret=SPOTIPY_CLIENT_SECRET,
@@ -31,7 +40,12 @@ def ConvertTime(time):
 
 # Returns information about the track currently playing
 def get_current_track():
-    current_playback = sp.current_playback()
+    try:
+        current_playback = sp.current_playback()
+    except Exception as e:
+        print(f"Erreur lors de la récupération du morceau actuel : {e}")
+        return None
+
 
     if current_playback is not None:
         track = current_playback['item']
